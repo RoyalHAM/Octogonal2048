@@ -4,6 +4,7 @@ public class octo2048
    public static final int RANDOM_INT1=1;
    public static final int RANDOM_INT2=2;
    public static final int WIN_VALUE=2048;
+   public static char move;
    private static SparseMatrix<Integer> sm = new SparseMatrix(5,5);
    public static void main(String[]args)
    {
@@ -27,6 +28,12 @@ public class octo2048
             newRandomInt();
             System.out.print(sm);
             System.out.print("\n'q' to swipe diagonally up left, \n'w' to swipe up, \n'e' to swipe diagonally up right, \n'd' to swipe left, \n'c' to swipe diagonally down left, \n'x' to swipe down, \n'z' to swipe diagonally down left, \n'a' to swipe left\n");
+            move=input.nextLine().charAt(0);
+            while(!swipe(move))
+            {
+               System.out.println("Please enter a valid direction.");
+               move=input.nextLine().charAt(0);
+            }
          }
          System.out.println("Would you like to play again?");
          String ans=input.nextLine();
@@ -66,26 +73,29 @@ public class octo2048
       sm.add(r,c,(int)(Math.random()*2+1));
    }
    //assume (r1,c1) is a valid index
-   public static void replace(int r1, int c1,int r2,int c2)
+   public static int replace(int r1, int c1,int r2,int c2)
    {
       if(sm.get(r2,c2)==null)
       {
          sm.set(r2,c2,sm.get(r1,c1));
+         return 0;
       }
       if(sm.get(r1,c2).equals(sm.get(r2,c2)))
       {
          doubleCapacity(r2,c2);
+         return 1;
       }
-      return;
+      return -1;
    }
    public static void doubleCapacity(int r,int c)
    {
-   Integer i=sm.set(r,c,sm.get(r,c)*2);
+      Integer i=sm.set(r,c,sm.get(r,c)*2);
    
    }
    //movement methods
    public static boolean swipe(char input)
    {
+      int trav=0;
       if(input=='q') //diagonal up left
       {
       
@@ -93,7 +103,15 @@ public class octo2048
       }
       if(input=='w') //up
       {
-      
+         while(trav<sm.numColumns())
+         {
+            if(trav==0||trav==numColumns()-1)
+            {
+            
+            }
+            else
+            while()
+         }
          return true;
       }
       if(input=='e') //diagonal up right
