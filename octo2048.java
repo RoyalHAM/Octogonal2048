@@ -84,49 +84,49 @@ public class octo2048
    
    }
    //movement methods
-   public static void swipe(char input)
+   public static boolean swipe(char input)
    {
       if(input=='q') //diagonal up left
       {
       
-         return;
+         return true;
       }
       if(input=='w') //up
       {
       
-         return;
+         return true;
       }
       if(input=='e') //diagonal up right
       {
       
-         return;
+         return true;
       }
       if(input=='d') //left
       {
       
-         return;
+         return true;
       }
       if(input=='c') //diagonal down left
       {
       
-         return;
+         return true;
       }
       if(input=='x') //down
       {
       
-         return;
+         return true;
       }
       if(input=='z') //diagonal down right
       {
       
-         return;
+         return true;
       }
       if(input=='a') //right
       {
       
-         return;
+         return true;
       }
-      return;
+      return false;
    }
    
    
