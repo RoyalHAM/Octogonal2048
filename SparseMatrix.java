@@ -69,6 +69,7 @@ public class SparseMatrix<Integer>
       }
       return null;
    }
+   
    public Integer set(int r, int c, Integer x)
    {
       Cell<Integer> object = new Cell<Integer>(r,c,x);
@@ -131,7 +132,11 @@ public class SparseMatrix<Integer>
    }
    public boolean isValid(int r,int c)
    {
-      if((r==0&&c==numColumns()-1)||(r==0&&c==0)||(c==0&&r==numRows()-1)||(c==numColumns()-1&&r==numRows()-1)||get(r,c)!=null)
+      if((r==0&&c==numColumns()-1)||
+         (r==0&&c==0)||
+         (c==0&&r==numRows()-1)||
+         (c==numColumns()-1&&r==numRows()-1)||
+         get(r,c)!=null)
          return false;
       return true;
    }

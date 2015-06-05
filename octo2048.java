@@ -28,16 +28,17 @@ public class octo2048
             newRandomInt();
             System.out.print(sm);
             System.out.print("\n'q' to swipe diagonally up left, \n'w' to swipe up, \n'e' to swipe diagonally up right, \n'd' to swipe left, \n'c' to swipe diagonally down left, \n'x' to swipe down, \n'z' to swipe diagonally down left, \n'a' to swipe left\n");
-            move=input.nextLine().charAt(0);
+            move=input.nextLine().toLowerCase().charAt(0);
             while(!swipe(move))
             {
                System.out.println("Please enter a valid direction.");
-               move=input.nextLine().charAt(0);
+               move=input.nextLine().toLowerCase().charAt(0);
             }
          }
          System.out.println("Would you like to play again?");
          String ans=input.nextLine();
-         if(ans.equals("yes"))
+         ans=ans.toLowerCase();
+         if(ans.equals("yes")||ans.equals("y")||ans.equals("ye")||ans.equals("yes"))
             reset();
          else
             isPlaying=false;
@@ -96,6 +97,8 @@ public class octo2048
    public static boolean swipe(char input)
    {
       int trav=0;
+      int loc1;
+      int loc2;
       if(input=='q') //diagonal up left
       {
       
@@ -105,12 +108,12 @@ public class octo2048
       {
          while(trav<sm.numColumns())
          {
-            if(trav==0||trav==numColumns()-1)
+            if(trav==0||trav==sm.numColumns()-1)
             {
             
             }
             else
-            while()
+            {}
          }
          return true;
       }
