@@ -4,6 +4,7 @@ public class octo2048
    public static final int RANDOM_INT1=1;
    public static final int RANDOM_INT2=2;
    public static final int WIN_VALUE=2048;
+   public static String in;
    public static char move;
    private static SparseMatrix<Integer> sm = new SparseMatrix(5,5);
    public static void main(String[]args)
@@ -28,11 +29,17 @@ public class octo2048
             newRandomInt();
             System.out.print(sm);
             System.out.print("\n'q' to swipe diagonally up left, \n'w' to swipe up, \n'e' to swipe diagonally up right, \n'd' to swipe left, \n'c' to swipe diagonally down left, \n'x' to swipe down, \n'z' to swipe diagonally down left, \n'a' to swipe left\n");
-            move=input.nextLine().toLowerCase().charAt(0);
+            in=input.nextLine();
+            if(in.length()==0)
+               in="p";
+            move=in.toLowerCase().charAt(0);
             while(!swipe(move))
             {
                System.out.println("Please enter a valid direction.");
-               move=input.nextLine().toLowerCase().charAt(0);
+               in=input.nextLine();
+               if(in.length()==0)
+                  in="p";
+               move=in.toLowerCase().charAt(0);
             }
          }
          System.out.println("Would you like to play again?");
@@ -76,6 +83,10 @@ public class octo2048
    //assume (r1,c1) is a valid index
    public static int replace(int r1, int c1,int r2,int c2)
    {
+      while(sm.get(r1,c1)==null)
+      {
+         return -2;
+      }
       if(sm.get(r2,c2)==null)
       {
          sm.set(r2,c2,sm.get(r1,c1));
@@ -95,7 +106,8 @@ public class octo2048
    //movement methods
    public static boolean swipe(char input)
    {
-      int trav=0;
+      int travX=0;
+      int travY=0;
       int loc1;
       int loc2;
       if(input=='q') //diagonal up left
@@ -105,9 +117,9 @@ public class octo2048
       }
       if(input=='w') //up
       {
-         while(trav<sm.numColumns())
+         while(travX<sm.numColumns())
          {
-            if(trav==0||trav==sm.numColumns()-1)
+            if(travX==0||travX==sm.numColumns()-1)
             {
                for(int i=sm.numColumns()-2;i>0;i--)
                {
