@@ -9,7 +9,7 @@ public class octo2048
    public static void main(String[]args)
    {
       Scanner input = new Scanner(System.in);
-      System.out.println("Welcome to Octogonal 2048!");
+      System.out.println("Welcome to Octogonal "+WIN_VALUE+"!");
       boolean isPlaying=true;
       while(isPlaying)
       {
@@ -71,7 +71,7 @@ public class octo2048
          r=(int)(Math.random()*sm.numRows());
          c=(int)(Math.random()*sm.numColumns());
       }
-      sm.add(r,c,(int)(Math.random()*2+1));
+      sm.add(r,c,(int)(Math.random()*RANDOM_INT2+RANDOM_INT1));
    }
    //assume (r1,c1) is a valid index
    public static int replace(int r1, int c1,int r2,int c2)
@@ -91,7 +91,6 @@ public class octo2048
    public static void doubleCapacity(int r,int c)
    {
       Integer i=sm.set(r,c,sm.get(r,c)*2);
-   
    }
    //movement methods
    public static boolean swipe(char input)
@@ -110,10 +109,16 @@ public class octo2048
          {
             if(trav==0||trav==sm.numColumns()-1)
             {
-            
+               for(int i=sm.numColumns()-2;i>0;i--)
+               {
+               
+               
+               }
             }
             else
-            {}
+            {
+            
+            }
          }
          return true;
       }

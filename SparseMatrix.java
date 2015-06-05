@@ -28,7 +28,7 @@ public class SparseMatrix<Integer>
    
    private int getKey(int r,int c)
    {
-      return r*this.numColumns()+c;
+      return r*numColumns()+c;
    }
    
    public void add(int r, int c, Integer x)	   //adds obj at row r, col c
@@ -65,7 +65,8 @@ public class SparseMatrix<Integer>
       int key = getKey(r,c);
       for(int k=0;k<list.size();k++)
       {
-         return list.get(k).get();
+         if(key==getKey(list.get(k).getRow(),list.get(k).getColumn()))
+            return list.get(k).get();
       }
       return null;
    }
